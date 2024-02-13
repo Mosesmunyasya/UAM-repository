@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Reset</title>
+    <style>
+      body {
+        background-color: rgb(88, 14, 14);
+        font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+      p {
+        color: #0f0c0c;
+        font-size: 18c.px;
+        background-color: #fff;
+      }
+      .container {
+        background-color: #fff;
+        max-width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 15px;
+        transform: translate(-10%, 30%);
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+        background-color: #fff;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type='email'],
+      input[type='password'] {
+        width: 90%;
+        padding: 8px;
+        font-size: 15px;
+        border: 1px solid #131111;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 15px;
+        background-color: maroon;
+        color: white;
+        border: black;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgb(80, 16, 1);
+      }
+
+      #error {
+        color: red;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img src="./Equity logo.PNG" alt="Logo" width="100px" />
+      <p>Please enter the fields below to reset your password</p>
+      <form id="resetForm" onsubmit="return validateForm()">
+        <div class="form-group">
+          <label for="email"></label>
+          <input type="email" id="email" placeholder="Email Address" required />
+        </div>
+        <div class="form-group">
+          <label for="password"></label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+            minlength="4"
+            maxlength="12"
+          />
+        </div>
+        <div class="form-group">
+          <label for="confirmpassword"></label>
+          <input
+            type="password"
+            id="confirmpassword"
+            placeholder="Confirm Password"
+            required
+            minlength="4"
+            maxlength="12"
+          />
+        </div>
+        <div class="form-group">
+          <button type="submit">Reset Password</button>
+        </div>
+      </form>
+      <div id="message"></div>
+    </div>
+
+    <script>
+      function validateEmail(email) {
+        var mail = document.getElementById('email').value;
+        const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[a-zA-Z]).{8,}$/;
+        if (regex.test(email)) {
+          console.log('Valid email addess');
+        } else {
+          console.log('Invalid Email address');
+        }
+      }
+
+      function checkPassword() {
+        var password = document.getElementById('Password').value;
+        var confirmPassword = document.getElementById('Confirm Password').value;
+        var message = document.getElementById('message');
+
+        if (password.length != 0) {
+          if (password == confirmpassword) {
+            message.innerHTML = 'Passwords match';
+          } else {
+            message.innerHTML = 'Passwords dont match';
+          }
+        } else {
+          alert('Passwords cant be empty!');
+          message.innerhtml = '';
+        }
+      }
+    </script>
+  </body>
+</html>
